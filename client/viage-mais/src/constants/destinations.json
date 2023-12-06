@@ -1,0 +1,47 @@
+[
+    {
+        "name": "foz do iguacu",
+        "country": "Brasil",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/foziguacu.webp"
+    },
+    {
+        "name": "Caribe",
+        "country": "Caribe",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/caribe.webp"
+    },
+    {
+        "name": "Dubai",
+        "country": "Emirados Árabes Unidos",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/dubai.webp"
+    },
+    {
+        "name": "Macéio",
+        "country": "Brasil",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/maceio.webp"
+    },
+    {
+        "name": "Londres",
+        "country": "Inglaterra",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/londres.webp"
+    },
+    {
+        "name": "Cancún",
+        "country": "México",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/mexico.webp"
+    },
+    {
+        "name": "Serra Gaúch",
+        "country": "Brasil",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/serra-gaucha.jpg"
+    },
+    {
+        "name": "Machu Picchu",
+        "country": "Peru",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/peru.webp"
+    },
+    {
+        "name": "Paris",
+        "country": "França",
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/parisjpg.jpg"
+    }
+]

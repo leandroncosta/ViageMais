@@ -1,0 +1,22 @@
+[
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/hotel-rio.webp",
+        "name": "Nome ficticio",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/hotel-londres.webp",
+        "name": "Nome ficticio",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/hotel-dubai.jpg",
+        "name": "Nome ficticio",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/hotel-salvador.jpg",
+        "name": "Nome ficticio",
+        "price": "999"
+    }
+]

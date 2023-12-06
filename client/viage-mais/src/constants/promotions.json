@@ -1,0 +1,32 @@
+[
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/buenos-aires.jpg",
+        "name": "Buenos Aires",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/lisboa.webp",
+        "name": "Lisboa",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/santiago.jpg",
+        "name": "Santiago",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/foziguacu.webp",
+        "name": "Foz do Iguaçu",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/serra-gaucha.jpg",
+        "name": "Serra Gaúcha",
+        "price": "999"
+    },
+    {
+        "imgUrl": "https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/parisjpg.jpg",
+        "name": "Paris",
+        "price": "999"
+    }
+]

@@ -1,12 +1,12 @@
-import Header from "./Header"
+import Header from './Header';
 
 const MainContainer = ({ children }) => {
-  return (
-    <div>
-      <Header />
-      {children}
-    </div>
-  )
-}
+    return (
+        <>
+            <Header />
+            {children}
+        </>
+    );
+};
 
-export default MainContainer
+export default MainContainer;
