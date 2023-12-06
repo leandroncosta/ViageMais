@@ -54,11 +54,11 @@ const adm = ({ data }) => {
                     <tbody>
                         {data &&
                             data.map((item) => (
-                                <tr>
+                                <tr key={item.title}>
                                     <td>
                                         <div>
                                             <input
-                                                class="form-check-input "
+                                                className="form-check-input "
                                                 type="checkbox"
                                                 id="checkboxNoLabel"
                                                 name="client"
@@ -72,12 +72,12 @@ const adm = ({ data }) => {
                                     <td>12132</td>
                                     <td>
                                         <a>
-                                            <i class="fa-solid fa-pen"></i>
+                                            <i className="fa-solid fa-pen"></i>
                                         </a>
                                         <a
                                             data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">
-                                            <i class="fas fa-trash trash"></i>
+                                            <i className="fas fa-trash trash"></i>
                                         </a>
                                     </td>
                                 </tr>

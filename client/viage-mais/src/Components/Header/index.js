@@ -1,4 +1,11 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 const Header = () => {
+    const router = useRouter();
+
+    console.log(router);
+
     return (
         <header className="w-100">
             <nav className="container navbar navbar-expand-lg">
@@ -9,9 +16,13 @@ const Header = () => {
                             alt="logo"
                             className="logo"
                         />
-                        <a className="navbar-brand text-white" href="/">
+                        <Link
+                            className={`navbar-brand text-white ${
+                                router.asPath === '/' ? 'active' : ''
+                            }`}
+                            href="/">
                             ViageMais
-                        </a>
+                        </Link>
                     </div>
                     <button
                         className="navbar-toggler"
@@ -28,35 +39,63 @@ const Header = () => {
                         id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a
-                                    className="nav-link text-white"
+                                <Link
+                                    className={`nav-link text-white ${
+                                        router.asPath === '/#hotels'
+                                            ? 'l-active'
+                                            : ''
+                                    }`}
                                     href="/#hotels">
                                     Hotéis
-                                </a>
+                                </Link>
                                 <span />
                             </li>
                             <li className="nav-item">
-                                <a
-                                    className="nav-link text-white"
+                                <Link
+                                    className={`nav-link text-white ${
+                                        router.asPath === '/#destinations'
+                                            ? 'l-active'
+                                            : ''
+                                    }`}
                                     href="/#destinations">
                                     Destinos
-                                </a>
+                                </Link>
                                 <span />
                             </li>
                             <li className="nav-item">
-                                <a
-                                    className="nav-link text-white"
+                                <Link
+                                    className={`${
+                                        router.asPath === '/#promotions'
+                                            ? 'active'
+                                            : ''
+                                    } nav-link text-white`}
                                     href="#promotions">
                                     Promoções
-                                </a>
+                                </Link>
                                 <span />
                             </li>
                             <li className="nav-item">
-                                <a
-                                    className="nav-link text-white"
+                                <Link
+                                    className={`${
+                                        router.asPath === '/#about'
+                                            ? 'active'
+                                            : ''
+                                    } nav-link text-white`}
                                     href="/#about">
                                     Contato
-                                </a>
+                                </Link>
+                                <span />
+                            </li>
+                            <li className="nav-item">
+                                <Link
+                                    className={`nav-link text-white ${
+                                        router.pathname === '/login'
+                                            ? 'l-active'
+                                            : ''
+                                    }`}
+                                    href="/login">
+                                    Login
+                                </Link>
                                 <span />
                             </li>
                         </ul>
@@ -71,13 +110,6 @@ const Header = () => {
                                 Busque
                             </button>
                         </form>
-
-                        <div className="nav-item">
-                            <a className="nav-link text-white" href="/login">
-                                Login
-                            </a>
-                            <span />
-                        </div>
                     </div>
                 </div>
             </nav>
