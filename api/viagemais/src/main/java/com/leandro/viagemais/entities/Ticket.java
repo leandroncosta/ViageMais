@@ -1,14 +1,23 @@
 package com.leandro.viagemais.entities;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.leandro.viagemais.entities.user.User;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table
@@ -23,15 +32,52 @@ public class Ticket {
   private String airline;
   private String flightType;
   private Boolean roundTrip;
+
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private LocalDate date;
   private int quantity;
   private Boolean promotion;
   private String airlineCnpj;
   private Double value;
 
+  @JsonIgnore
+  @ManyToMany(mappedBy = "tickets", fetch = FetchType.EAGER)
+  private Set<User> users = new HashSet<>();
+
   @ManyToOne
   @JoinColumn(name = "destination_id")
   private Destination destination;
+
+  @OneToMany(mappedBy = "ticket")
+  private Set<TravelPackage> packages = new HashSet<>();
+
+  public Ticket(UUID id, Double serviceFee, Double boardingFee, String airline, String flightType, Boolean roundTrip,
+      LocalDate date, int quantity, Boolean promotion, String airlineCnpj, Double value, Destination destination) {
+    this.id = id;
+    this.serviceFee = serviceFee;
+    this.boardingFee = boardingFee;
+    this.airline = airline;
+    this.flightType = flightType;
+    this.roundTrip = roundTrip;
+    this.date = date;
+    this.quantity = quantity;
+    this.promotion = promotion;
+    this.airlineCnpj = airlineCnpj;
+    this.value = value;
+    this.destination = destination;
+  }
+
+  public Ticket() {
+
+  }
+
+  public Destination getDestination() {
+    return destination;
+  }
+
+  public void setDestination(Destination destination) {
+    this.destination = destination;
+  }
 
   public UUID getId() {
     return id;
@@ -119,6 +165,14 @@ public class Ticket {
 
   public void setValue(Double value) {
     this.value = value;
+  }
+
+  @Override
+  public String toString() {
+    return "Ticket [id=" + id + ", serviceFee=" + serviceFee + ", boardingFee=" + boardingFee + ", airline=" + airline
+        + ", flightType=" + flightType + ", roundTrip=" + roundTrip + ", date=" + date + ", quantity=" + quantity
+        + ", promotion=" + promotion + ", airlineCnpj=" + airlineCnpj + ", value=" + value + ", destination="
+        + destination + "]";
   }
 
 }
