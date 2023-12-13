@@ -14,41 +14,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.viagemais.entities.Hotel;
-import com.leandro.viagemais.services.HotelService;
+import com.leandro.viagemais.entities.Ticket;
+import com.leandro.viagemais.services.TicketService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/hotel")
-public class HotelController {
+@RequestMapping("api/ticket")
+public class TicketController {
 
-  private HotelService hotelService;
+  private TicketService ticketService;
 
-  public HotelController(HotelService hotelService) {
-    this.hotelService = hotelService;
+  public TicketController(TicketService ticketService) {
+    this.ticketService = ticketService;
   }
 
   @GetMapping
-  public ResponseEntity<List<Hotel>> list() {
-    var hotels = this.hotelService.findAll();
+  public ResponseEntity<List<Ticket>> list() {
+    var tickets = this.ticketService.findAll();
 
-    return ResponseEntity.ok().body(hotels);
+    return ResponseEntity.ok().body(tickets);
   }
 
   @PostMapping
-  public ResponseEntity<String> create(@RequestBody @Valid Hotel data) {
-
-    this.hotelService.save(data);
+  public ResponseEntity<String> create(@RequestBody @Valid Ticket data) {
+    System.out.println(data.toString());
+    this.ticketService.save(data);
 
     return ResponseEntity.status(201).build();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Hotel> findById(@PathVariable("id") UUID id) {
-    var hotel = this.hotelService.findById(id);
+  public ResponseEntity<Ticket> findById(@PathVariable("id") UUID id) {
+    var ticket = this.ticketService.findById(id);
 
-    if (hotel.isPresent()) {
-      return ResponseEntity.ok().body(hotel.get());
+    if (ticket.isPresent()) {
+      return ResponseEntity.ok().body(ticket.get());
     }
 
     return ResponseEntity.noContent().build();
@@ -63,7 +64,7 @@ public class HotelController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
-    this.hotelService.deleteById(id);
+    this.ticketService.deleteById(id);
 
     return ResponseEntity.noContent().build();
   }
