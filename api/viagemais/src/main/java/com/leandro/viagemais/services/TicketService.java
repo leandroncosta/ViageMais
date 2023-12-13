@@ -5,14 +5,14 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.leandro.viagemais.entities.Hotel;
-import com.leandro.viagemais.repositories.HotelRepository;
+import com.leandro.viagemais.entities.Ticket;
+import com.leandro.viagemais.repositories.TicketRepository;
 import com.leandro.viagemais.servicesImpl.ServiceImplGeneric;
 
 @Service
-public class HotelService extends ServiceImplGeneric<Hotel, UUID, HotelRepository> {
+public class TicketService extends ServiceImplGeneric<Ticket, UUID, TicketRepository> {
 
-  public HotelService(@Qualifier("hotelRepository") HotelRepository repository) {
+  public TicketService(@Qualifier("ticketRepository") TicketRepository repository) {
     super(repository);
 
   }
