@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leandro.viagemais.entities.Hotel;
+import com.leandro.viagemais.dto.TicketDTO;
+import com.leandro.viagemais.entities.Destination;
 import com.leandro.viagemais.entities.Ticket;
+import com.leandro.viagemais.services.DestinationService;
 import com.leandro.viagemais.services.TicketService;
 
 import jakarta.validation.Valid;
@@ -25,8 +28,11 @@ public class TicketController {
 
   private TicketService ticketService;
 
-  public TicketController(TicketService ticketService) {
+  private DestinationService destinationService;
+
+  public TicketController(TicketService ticketService, DestinationService destinationService) {
     this.ticketService = ticketService;
+    this.destinationService = destinationService;
   }
 
   @GetMapping
@@ -36,12 +42,18 @@ public class TicketController {
     return ResponseEntity.ok().body(tickets);
   }
 
+  @Transactional
   @PostMapping
-  public ResponseEntity<String> create(@RequestBody @Valid Ticket data) {
-    System.out.println(data.toString());
-    this.ticketService.save(data);
+  public ResponseEntity<Ticket> create(@RequestBody @Valid TicketDTO data) {
+    var destination = this.destinationService.findById((UUID) data.destination_id())
+        .orElse(new Destination());
 
-    return ResponseEntity.status(201).build();
+    var ticket = new Ticket(data);
+    ticket.setDestination(destination);
+
+    this.ticketService.save(ticket);
+
+    return ResponseEntity.status(201).body(ticket);
   }
 
   @GetMapping("/{id}")
@@ -56,10 +68,12 @@ public class TicketController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<String> update(@PathVariable("id") UUID id, @RequestBody @Valid Hotel data) {
+  public ResponseEntity<String> update(@PathVariable("id") UUID id, @RequestBody @Valid TicketDTO data) {
+    var ticketUpdated = new Ticket(data);
+
+    this.ticketService.updateById(ticketUpdated, id);
 
     return ResponseEntity.ok().build();
-
   }
 
   @DeleteMapping("/{id}")
@@ -68,5 +82,4 @@ public class TicketController {
 
     return ResponseEntity.noContent().build();
   }
-
 }
