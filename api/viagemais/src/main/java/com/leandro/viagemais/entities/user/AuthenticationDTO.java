@@ -1,5 +1,7 @@
 package com.leandro.viagemais.entities.user;
 
-public record AuthenticationDTO(String login, String password) {
+import jakarta.validation.constraints.NotBlank;
+
+public record AuthenticationDTO(@NotBlank String login, @NotBlank String password) {
 
 }

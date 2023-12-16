@@ -1,5 +1,7 @@
 package com.leandro.viagemais.entities.user;
 
-public record RegisterDTO(String login, String password, UserRole role) {
+import jakarta.validation.constraints.NotBlank;
+
+public record RegisterDTO(@NotBlank String login, @NotBlank String password, UserRole role) {
 
 }
