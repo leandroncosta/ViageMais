@@ -34,12 +34,10 @@ public class AuthenticationController {
 
   @PostMapping("/login")
   public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
-
     var userNamePass = new UsernamePasswordAuthenticationToken(data.login(), data.password());
     var auth = this.authenticationManager.authenticate(userNamePass);
 
     var token = tokenService.GenerateToken((User) auth.getPrincipal());
-
     var response = new LoginResponseDTO(token);
 
     return ResponseEntity.ok(response);
@@ -48,13 +46,14 @@ public class AuthenticationController {
   @PostMapping("/register")
   public ResponseEntity<String> register(@RequestBody @Valid RegisterDTO data) {
     if (this.userRepository.findByLogin(data.login()) != null) {
-      return ResponseEntity.badRequest().build();
+      return ResponseEntity.badRequest().body("Usuário já existe");
     }
 
     String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
     User newUser = new User(data.login(), encryptedPassword, data.role());
 
     this.userRepository.save(newUser);
+
     return ResponseEntity.status(201).build();
   }
 }
