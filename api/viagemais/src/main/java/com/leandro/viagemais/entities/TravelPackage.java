@@ -35,16 +35,29 @@ public class TravelPackage {
   @ManyToMany(mappedBy = "packages", fetch = FetchType.EAGER)
   private Set<User> users = new HashSet<>();
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "hotel_id")
   private Hotel hotel;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "ticket_id")
   private Ticket ticket;
 
   public TravelPackage(TravelPackageDTO data) {
     BeanUtils.copyProperties(data, this);
+  }
+
+  public TravelPackage() {
+
+  }
+
+  public TravelPackage(UUID id, Boolean promotion, Double totalValue, Set<User> users, Hotel hotel, Ticket ticket) {
+    this.id = id;
+    this.promotion = promotion;
+    this.totalValue = totalValue;
+    this.users = users;
+    this.hotel = hotel;
+    this.ticket = ticket;
   }
 
   public UUID getId() {

@@ -1,17 +1,16 @@
 package com.leandro.viagemais.entities;
 
-import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.BeanUtils;
 
 import com.leandro.viagemais.dto.DestinationDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table
@@ -21,16 +20,12 @@ public class Destination {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
+
+  @Column(unique = true, nullable = false)
   private String city;
+
   private String state;
   private String imageUrl;
-
-  @OneToMany(mappedBy = "destination")
-  private Set<Ticket> tickets;
-
-  public Destination(DestinationDTO data) {
-    BeanUtils.copyProperties(data, this);
-  }
 
   public Destination(UUID id, String city, String state, String imageUrl) {
     this.id = id;
@@ -41,6 +36,10 @@ public class Destination {
 
   public Destination() {
 
+  }
+
+  public Destination(DestinationDTO data) {
+    BeanUtils.copyProperties(data, this);
   }
 
   public UUID getId() {

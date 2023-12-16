@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leandro.viagemais.entities.Ticket;
 import com.leandro.viagemais.entities.TravelPackage;
 
@@ -36,17 +37,22 @@ public class User implements UserDetails {
   @Column(nullable = false, columnDefinition = "TEXT")
   private String login;
 
+  @JsonIgnore
   @Column(nullable = false, columnDefinition = "TEXT")
   private String password;
 
   private UserRole role;
+  // -- pode ser "cliente", "administrador", etc.
+  // -- outros campos específicos do usuário
 
-  @ManyToMany
-  @JoinTable(name = "user_ticket", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "ticket_id"))
+  @JsonIgnore
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "buy_ticket", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "ticket_id"))
   private Set<Ticket> tickets = new HashSet<>();
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "user_package", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "package_id"))
+  @JsonIgnore
+  @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(name = "buy_package", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "package_id"))
   private Set<TravelPackage> packages = new HashSet<>();
 
   public User(String login, String password, UserRole role) {
@@ -91,7 +97,23 @@ public class User implements UserDetails {
     this.password = password;
   }
 
-  // metodos spring sec
+  public Set<Ticket> getTickets() {
+    return tickets;
+  }
+
+  public void setTickets(Set<Ticket> tickets) {
+    this.tickets = tickets;
+  }
+
+  public Set<TravelPackage> getPackages() {
+    return packages;
+  }
+
+  public void setPackages(Set<TravelPackage> packages) {
+    this.packages = packages;
+  }
+
+  // metodos spring security
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     if (this.role == UserRole.ADMIN) {

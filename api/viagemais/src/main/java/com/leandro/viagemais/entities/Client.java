@@ -1,5 +1,7 @@
 package com.leandro.viagemais.entities;
 
+// classe ainda vai ser usada...
+
 public class Client {
   private int id;
   private String name;
@@ -7,6 +9,8 @@ public class Client {
   private String tel;
   private String passPort;
   private String cpf;
+
+  // private usuario_id
 
   public Client(String name, String email, String tel, String passPort, String cpf) {
     this.name = name;

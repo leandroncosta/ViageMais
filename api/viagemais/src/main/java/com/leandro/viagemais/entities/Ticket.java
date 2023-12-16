@@ -5,10 +5,15 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import org.springframework.beans.BeanUtils;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.leandro.viagemais.dto.TicketDTO;
 import com.leandro.viagemais.entities.user.User;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +22,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table
@@ -37,6 +41,8 @@ public class Ticket {
   private LocalDate date;
   private int quantity;
   private Boolean promotion;
+
+  @Column(unique = true)
   private String airlineCnpj;
   private Double value;
 
@@ -44,12 +50,9 @@ public class Ticket {
   @ManyToMany(mappedBy = "tickets", fetch = FetchType.EAGER)
   private Set<User> users = new HashSet<>();
 
-  @ManyToOne
+  @ManyToOne(cascade = { CascadeType.ALL })
   @JoinColumn(name = "destination_id")
   private Destination destination;
-
-  @OneToMany(mappedBy = "ticket")
-  private Set<TravelPackage> packages = new HashSet<>();
 
   public Ticket(UUID id, Double serviceFee, Double boardingFee, String airline, String flightType, Boolean roundTrip,
       LocalDate date, int quantity, Boolean promotion, String airlineCnpj, Double value, Destination destination) {
@@ -69,6 +72,10 @@ public class Ticket {
 
   public Ticket() {
 
+  }
+
+  public Ticket(TicketDTO dto) {
+    BeanUtils.copyProperties(dto, this);
   }
 
   public Destination getDestination() {
@@ -173,6 +180,14 @@ public class Ticket {
         + ", flightType=" + flightType + ", roundTrip=" + roundTrip + ", date=" + date + ", quantity=" + quantity
         + ", promotion=" + promotion + ", airlineCnpj=" + airlineCnpj + ", value=" + value + ", destination="
         + destination + "]";
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
   }
 
 }

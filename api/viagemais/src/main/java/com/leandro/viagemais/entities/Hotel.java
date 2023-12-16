@@ -1,18 +1,20 @@
 package com.leandro.viagemais.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Table
 @Entity
@@ -21,24 +23,33 @@ public class Hotel {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
+
+  @Column(unique = true)
   private String cnpj;
+
+  @Column(nullable = false)
   private String name;
+
   private int stars;
   private Boolean promotion;
+
+  @Column(nullable = false)
   private Double value;
 
-  @JsonFormat(pattern = "dd-MM-yyyy")
-  private Date entryDate;
-  @JsonFormat(pattern = "dd-MM-yyyy")
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  @CreationTimestamp
+  private LocalDate entryDate;
+
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private Date departureDate;
 
   private String ImageUrl;
+
+  @NotBlank
+  @Column(nullable = false)
   private String adress;
 
-  @OneToMany(mappedBy = "hotel")
-  private Set<TravelPackage> packages = new HashSet<>();
-
-  public Hotel(UUID id, String cnpj, String name, int stars, Boolean promotion, Double value, Date entryDate,
+  public Hotel(UUID id, String cnpj, String name, int stars, Boolean promotion, Double value, LocalDate entryDate,
       Date departureDate, String imageUrl, String adress) {
     this.id = id;
     this.cnpj = cnpj;
@@ -104,11 +115,11 @@ public class Hotel {
     this.value = value;
   }
 
-  public Date getEntryDate() {
+  public LocalDate getEntryDate() {
     return entryDate;
   }
 
-  public void setEntryDate(Date entryDate) {
+  public void setEntryDate(LocalDate entryDate) {
     this.entryDate = entryDate;
   }
 
