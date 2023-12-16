@@ -1,5 +1,7 @@
 package com.leandro.viagemais.dto;
 
-public record DestinationDTO(String city, String state, String imageUrl) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DestinationDTO(@NotBlank String city, String state, String imageUrl) {
 
 }
