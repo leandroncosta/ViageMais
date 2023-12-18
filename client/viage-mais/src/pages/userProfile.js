@@ -8,6 +8,7 @@ const userProfile = () => {
     const handleClick = () => {
         setUser('');
         setLogin(false);
+        window.localStorage.setItem('token', '');
     };
 
     return (
