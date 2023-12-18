@@ -44,6 +44,9 @@ header {
         position: absolute;
         z-index: 200;
     }
+    a {
+        text-decoration: none;
+    }
     nav {
         background-color: transparent;
         z-index: 300;
@@ -84,6 +87,32 @@ header {
                     width: 100%;
                 }
             }
+        }
+    }
+    .container-user {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+            border: 3px solid black;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: var(--orange);
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.6s ease;
+            &:hover {
+                color: var(--orange);
+            }
+        }
+        span {
+            font-size: 0.6em;
+            text-transform: uppercase;
         }
     }
     .home {
@@ -648,4 +677,14 @@ tr {
     background: none;
     font-weight: bolder;
     font-size: 22px;
+}
+
+//  pagination doas tabelas
+
+li.pactive {
+    background-color: #bd7b2a;
+}
+
+.modal > * {
+    color: #000;
 }
