@@ -1,7 +1,7 @@
 <h1 align="center"> ViageMais </H1>
 
 <h1 align="center">
-        <img src="https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/airplane.svg" width="70px" />
+        <img src="https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/airplane.svg" width="70px" height="70px" />
 </h1>
 
 <h4 align="center">Status: Em desenvolvimento... </h4>
