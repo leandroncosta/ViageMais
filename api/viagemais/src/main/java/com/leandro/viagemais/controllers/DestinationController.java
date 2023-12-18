@@ -3,11 +3,14 @@ package com.leandro.viagemais.controllers;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.viagemais.entities.Destination;
 import com.leandro.viagemais.services.DestinationService;
+
+@CrossOrigin(origins = "*")
 
 @RestController
 @RequestMapping("api/destination")
