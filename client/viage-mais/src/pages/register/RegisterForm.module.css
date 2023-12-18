@@ -1,0 +1,43 @@
+.form {
+    margin-top: 3rem;
+}
+
+.cregister {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+}
+
+.cadastro {
+    color: #bd7b2a;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.cadastro:hover {
+    color: #ddd;
+}
+
+.cadastro p {
+    margin: 1rem 0;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.subtitle {
+    font-family: var(--type-second);
+    line-height: 1;
+    font-size: 3rem;
+    margin: 2rem 0rem;
+}
+.subtitle::after {
+    content: '';
+    display: block;
+    background: #bd7b2a;
+    height: 1rem;
+    width: 5rem;
+    border-radius: 0.3rem;
+}
