@@ -53,7 +53,8 @@ $ java -jar target/viagemais-0.0.1-SNAPSHOT.jar
 
 OU
 
-- Da sua IDE/editor de preferencia, abra o projeto que está na barra /api desse repo e rode
+- Da sua IDE/editor de preferencia, abrir a pasta /api desse repositorio e execute
+
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 O Swagger poderá ser visualizado em [localhost:8080/swagger-ui/index.html#/](http://localhost:8080/swagger-ui/index.html#/)
@@ -98,6 +99,7 @@ spring.jpa.open-in-view=false
 ### Adicional:
 
 #### 🎲 Rodando a aplicação (Frontend para testar API)
+
 - Obs: é necessário está com o nodejs instalado na máquina
 
 ```bash
@@ -117,5 +119,3 @@ $ npm run dev
 # O servidor inciará na porta:3000 - acesse <   http://localhost:3000/ >
 ```
 ---
-
-```
