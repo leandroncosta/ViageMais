@@ -53,7 +53,7 @@ $ java -jar target/viagemais-0.0.1-SNAPSHOT.jar
 
 OU
 
-- Da sua IDE/editor de preferencia, abrir a pasta /api desse repositorio e execute
+-  Baixe esse repositorio e abra a pasta /api na sua IDE/editor de preferencia (VScode, STS..) e execute a aplicação
 
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
