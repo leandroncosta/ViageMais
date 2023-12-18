@@ -1,10 +1,11 @@
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { userContext } from '@/store/userContext';
 
 const Header = () => {
+    const data = React.useContext(userContext);
     const router = useRouter();
-
-    console.log(router);
 
     return (
         <header className="w-100">
@@ -86,6 +87,7 @@ const Header = () => {
                                 </Link>
                                 <span />
                             </li>
+
                             <li className="nav-item">
                                 <Link
                                     className={`nav-link text-white ${
@@ -93,8 +95,8 @@ const Header = () => {
                                             ? 'l-active'
                                             : ''
                                     }`}
-                                    href="/login">
-                                    Login
+                                    href="/painel">
+                                    Painel
                                 </Link>
                                 <span />
                             </li>
@@ -110,6 +112,23 @@ const Header = () => {
                                 Busque
                             </button>
                         </form>
+                        {data.user ? (
+                            <Link href={'/userProfile'}>
+                                <div className="container-user">
+                                    <img
+                                        src={
+                                            'https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/homem-usuario.png'
+                                        }
+                                        alt="foto do usuario"
+                                    />
+                                    <span>@{data.user.username}</span>
+                                </div>
+                            </Link>
+                        ) : (
+                            <div className="container-user">
+                                <Link href={'/login'}>Login</Link>
+                            </div>
+                        )}
                     </div>
                 </div>
             </nav>
