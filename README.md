@@ -1,5 +1,6 @@
 <h1 align="center">
   ViageMais
+   <img src="https://raw.githubusercontent.com/LeandroNcosta/ViageMais/main/images/airplane.svg" />
 </h1>
 
 <p align="center">
@@ -48,9 +49,7 @@ GET /hotel
 
 ...
 
-As rotas restanstes podem ver pelo Swagger
-
-```
+As rotas restantes podem ver pelo Swagger
 
 
 ```
