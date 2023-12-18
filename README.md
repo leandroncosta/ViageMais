@@ -96,7 +96,7 @@ spring.jpa.properties.hibernate.format_sql = true
 spring.jpa.open-in-view=false
 ```
 
-### Adicional:
+## Parte opcional da entrega
 
 #### 🎲 Rodando a aplicação (Frontend para testar API)
 
