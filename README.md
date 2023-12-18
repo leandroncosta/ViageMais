@@ -60,6 +60,8 @@ GET /hotel
 
 As rotas restantes podem ver pelo Swagger
 
+```
+
 ### application.properties
 
 ```
