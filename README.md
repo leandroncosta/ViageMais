@@ -1,4 +1,4 @@
-h1 align="center">
+<h1 align="center">
   ViageMais
 </h1>
 
@@ -35,7 +35,7 @@ $ java -jar target/viagemais-0.0.1-SNAPSHOT.jar
 ```
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
-O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+O Swagger poderá ser visualizado em [localhost:8080/swagger-ui/index.html#/](http://localhost:8080/swagger-ui/index.html#/)
 
 ## API Endpoints
 
@@ -47,6 +47,8 @@ GET /destination/{id}
 GET /hotel
 
 ...
+
+As rotas restanstes podem ver pelo Swagger
 
 ```
 
