@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leandro.viagemais.dto.TicketDTO;
 import com.leandro.viagemais.entities.user.User;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -50,7 +49,7 @@ public class Ticket {
   @ManyToMany(mappedBy = "tickets", fetch = FetchType.EAGER)
   private Set<User> users = new HashSet<>();
 
-  @ManyToOne(cascade = { CascadeType.ALL })
+  @ManyToOne
   @JoinColumn(name = "destination_id")
   private Destination destination;
 
